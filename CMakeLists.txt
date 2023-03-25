@@ -204,6 +204,7 @@ add_library(sead OBJECT
   include/resource/seadResourceMgr.h
   include/resource/seadSharcArchiveRes.h
   include/resource/seadSZSDecompressor.h
+  include/resource-seadXmlElement.h
   modules/src/resource/seadArchiveRes.cpp
   modules/src/resource/seadResource.cpp
   modules/src/resource/seadResourceMgr.cpp
