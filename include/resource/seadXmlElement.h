@@ -20,14 +20,14 @@ public:
     };
 
 private:
-    TreeNode tree_node;
-    FixedSafeString<0x40> string;
-    u8* content;
+    TreeNode mTreeNode;
+    FixedSafeString<0x40> mString;
+    u8* mContent;
     u32 _88;
     bool _8C;
     u32 _90;
-    ObjList<void*> attributes;
-    Heap* heap;
+    ObjList<void*> mAttributes;
+    Heap* mHeap;
 };
 
 }  // namespace sead
