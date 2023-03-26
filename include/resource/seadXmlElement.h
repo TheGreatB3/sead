@@ -19,13 +19,20 @@ public:
     {
     };
 
+    enum class ContentType
+    {
+        TextMaybe,  // TODO
+        CData,
+        Base64,
+    };
+
 private:
     TreeNode mTreeNode;
     FixedSafeString<0x40> mString;
     u8* mContent;
-    u32 _88;
-    bool _8C;
-    u32 _90;
+    u32 mContentLength;
+    bool mOwnsContent;
+    ContentType mContentType;
     ObjList<void*> mAttributes;
     Heap* mHeap;
 };
