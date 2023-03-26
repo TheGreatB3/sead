@@ -22,9 +22,9 @@ public:
         Base64,
     };
 
-    XmlElement() = default;
+    XmlElement();
 
-    virtual ~XmlElement() = default;
+    virtual ~XmlElement();
 
 private:
     TreeNode mTreeNode;
