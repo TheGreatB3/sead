@@ -11,10 +11,6 @@ namespace sead
 class XmlElement
 {
 public:
-    XmlElement() = default;
-
-    virtual ~XmlElement() = default;
-
     struct XmlAttribute
     {
     };
@@ -25,6 +21,10 @@ public:
         CData,
         Base64,
     };
+
+    XmlElement() = default;
+
+    virtual ~XmlElement() = default;
 
 private:
     TreeNode mTreeNode;
