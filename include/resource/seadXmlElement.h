@@ -26,6 +26,8 @@ public:
 
     virtual ~XmlElement();
 
+    void setContent(u8* content, u32 content_length, bool owns_content);
+
 private:
     TreeNode mTreeNode;
     FixedSafeString<0x40> mString;
