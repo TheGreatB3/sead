@@ -14,6 +14,10 @@ public:
 
     virtual ~XmlElement() = default;
 
+    struct XmlAttribute
+    {
+    };
+
 private:
     TreeNode tree_node;
     FixedSafeString<0x40> string;
