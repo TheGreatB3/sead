@@ -2,6 +2,7 @@
 
 #include <container/seadObjList.h>
 #include <container/seadTreeNode.h>
+#include <heap/seadHeap.h>
 #include <prim/seadSafeString.h>
 
 namespace sead
@@ -21,12 +22,12 @@ public:
 private:
     TreeNode tree_node;
     FixedSafeString<0x40> string;
-    u64 _80;
+    u8* content;
     u32 _88;
     bool _8C;
     u32 _90;
     ObjList<void*> attributes;
-    u64 _C8;
+    Heap* heap;
 };
 
 }  // namespace sead
