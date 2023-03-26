@@ -27,6 +27,12 @@ public:
     virtual ~XmlElement();
 
     void setContent(u8* content, u32 content_length, bool owns_content);
+    SafeString findAttributeValue(const SafeString& name) const;
+    void* expandAttributeList(const SafeString& name);
+    bool addAttribute(const SafeString& name, const SafeString& value, Heap* heap);
+    bool updateAttribute(const SafeString& name, const SafeString& value, Heap* heap);
+    SafeString getContentString() const;
+    void setContentString(const SafeString& content, Heap* heap);
 
 private:
     TreeNode mTreeNode;
