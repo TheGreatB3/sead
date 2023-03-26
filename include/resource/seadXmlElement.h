@@ -33,7 +33,7 @@ private:
     u32 mContentLength;
     bool mOwnsContent;
     ContentType mContentType;
-    ObjList<void*> mAttributes;
+    ObjList<XmlAttribute> mAttributes;
     Heap* mHeap;
 };
 
