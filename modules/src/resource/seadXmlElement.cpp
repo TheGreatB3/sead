@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cstring>
 #include <resource/seadXmlElement.h>
+#include "prim/seadSafeString.h"
 
 namespace sead
 {
@@ -22,6 +23,11 @@ void XmlElement::setContent(u8* content, u32 content_length, bool owns_content)
         mContent = content;
         mContentLength = content_length;
     }
+}
+
+SafeString XmlElement::getContentString() const
+{
+    return mContent ? SafeString{(const char*)mContent} : SafeString::cEmptyString;
 }
 
 void XmlElement::setContentString(const SafeString& content, Heap* heap)
