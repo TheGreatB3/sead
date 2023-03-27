@@ -8,7 +8,15 @@ namespace sead
 
 XmlElement::XmlElement() = default;
 
-XmlElement::~XmlElement() = default;
+XmlElement::~XmlElement()
+{
+    if (mContent && mOwnsContent)
+    {
+        delete[] mContent;
+    }
+
+    mAttributes.freeBuffer();
+}
 
 void XmlElement::setContent(u8* content, u32 content_length, bool owns_content)
 {

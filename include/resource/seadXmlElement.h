@@ -13,6 +13,8 @@ class XmlElement
 public:
     struct XmlAttribute
     {
+        HeapSafeString name;
+        HeapSafeString value;
     };
 
     enum class ContentType
