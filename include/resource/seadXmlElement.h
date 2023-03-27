@@ -13,6 +13,11 @@ class XmlElement
 public:
     struct XmlAttribute
     {
+        XmlAttribute(Heap* heap, const SafeString& name_, const SafeString& value_)
+            : name(heap, name_), value(heap, value_)
+        {
+        }
+
         HeapSafeString name;
         HeapSafeString value;
     };
