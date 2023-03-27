@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <cstring>
+#include <prim/seadMemUtil.h>
 #include <resource/seadXmlElement.h>
-#include "prim/seadSafeString.h"
 
 namespace sead
 {
@@ -35,7 +35,7 @@ void XmlElement::setContentString(const SafeString& content, Heap* heap)
     auto len = content.calcLength();
     auto* con = new (heap) u8[len + 1];
 
-    memcpy(con, content.cstr(), len);
+    MemUtil::copy(con, content.cstr(), len);
     con[len] = 0;
 
     setContent(con, len, true);
