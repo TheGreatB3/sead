@@ -47,6 +47,36 @@ bool XmlElement::addAttribute(const SafeString& name, const SafeString& value, H
     return true;
 }
 
+// NON_MATCHING
+bool XmlElement::updateAttribute(const SafeString& name, const SafeString& value, Heap* heap)
+{
+    if (mAttributes.isEmpty())
+        return false;
+
+    for (auto& attr : mAttributes)
+    {
+        if (name == attr.name)
+        {
+            //if (value != attr.value)
+            {
+                auto valueLen = value.calcLength();
+                if (valueLen <= attr.value.calcLength())
+                {
+                    attr.value.cutOffCopy(value, valueLen);
+                }
+                else
+                {
+                    mAttributes.erase(&attr);
+                    addAttribute(name, value, heap);
+                }
+            }
+            return true;
+        }
+    }
+
+    return false;
+}
+
 SafeString XmlElement::getContentString() const
 {
     return mContent ? SafeString{(const char*)mContent} : SafeString::cEmptyString;
