@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <prim/seadMemUtil.h>
 #include <resource/seadXmlElement.h>
+#include "prim/seadSafeString.h"
 
 namespace sead
 {
@@ -32,6 +33,19 @@ void XmlElement::setContent(u8* content, u32 content_length, bool owns_content)
     }
 }
 
+SafeString XmlElement::findAttributeValue(const SafeString& name) const
+{
+    for (const auto& attr : mAttributes)
+    {
+        if (attr.name == name)
+        {
+            return attr.value;
+        }
+    }
+
+    return SafeString::cEmptyString;
+}
+
 bool XmlElement::addAttribute(const SafeString& name, const SafeString& value, Heap* heap)
 {
     if (name.isEmpty() || !mAttributes.isBufferReady() || mAttributes.isFull())
@@ -57,7 +71,7 @@ bool XmlElement::updateAttribute(const SafeString& name, const SafeString& value
     {
         if (name == attr.name)
         {
-            //if (value != attr.value)
+            // if (value != attr.value)
             {
                 auto valueLen = value.calcLength();
                 if (valueLen <= attr.value.calcLength())
