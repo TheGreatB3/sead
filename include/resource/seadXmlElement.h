@@ -35,7 +35,7 @@ public:
 
     void setContent(u8* content, u32 content_length, bool owns_content);
     SafeString findAttributeValue(const SafeString& name) const;
-    void* expandAttributeList(const SafeString& name);
+    ObjList<XmlAttribute>* expandAttributeList(int capacity, Heap* heap);
     bool addAttribute(const SafeString& name, const SafeString& value, Heap* heap);
     bool updateAttribute(const SafeString& name, const SafeString& value, Heap* heap);
     SafeString getContentString() const;
