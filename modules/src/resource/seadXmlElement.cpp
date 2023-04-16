@@ -63,14 +63,18 @@ ObjList<XmlElement::XmlAttribute>* XmlElement::expandAttributeList(int capacity,
     if (size >= capacity)
         return &mAttributes;
 
+    struct TempPair
     {
-        ObjArray<std::pair<FixedSafeString<0x400>, FixedSafeString<0x400>>> temp_values{};
+        FixedSafeString<0x400> first, second;
+    };
+
+    {
+        ObjArray<TempPair> temp_values{};
         temp_values.allocBuffer(size, heap, -8);  // Not sure why alignment is negative.
 
         for (const auto& attr : mAttributes)
         {
-            auto* temp_value = temp_values.emplaceBack(FixedSafeString<0x400>::cEmptyString,
-                                                       FixedSafeString<0x400>::cEmptyString);
+            auto* temp_value = temp_values.emplaceBack();
             temp_value->first = attr.name;
             temp_value->second = attr.value;
         }
