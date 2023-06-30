@@ -42,14 +42,14 @@ public:
     void setContentString(const SafeString& content, Heap* heap);
 
 private:
-    TreeNode mTreeNode;
-    FixedSafeString<0x40> mString;
-    u8* mContent;
-    u32 mContentLength;
-    bool mOwnsContent;
-    ContentType mContentType;
-    ObjList<XmlAttribute> mAttributes;
-    Heap* mHeap;
+    TreeNode mTreeNode{};
+    FixedSafeString<0x40> mString = FixedSafeString<0x40>::cEmptyString;
+    u8* mContent{};
+    u32 mContentLength{};
+    bool mOwnsContent{};
+    ContentType mContentType = ContentType::TextMaybe;
+    ObjList<XmlAttribute> mAttributes{};
+    Heap* mHeap{};
 };
 
 }  // namespace sead
